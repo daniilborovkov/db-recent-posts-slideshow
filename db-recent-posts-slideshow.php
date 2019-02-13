@@ -21,6 +21,11 @@ function db_recent_posts_slideshow($atts)
         'post_type'      => 'post',
         'posts_per_page' => 5,
         'order'          => 'DESC',
+        'meta_query' => array( 
+            array(
+                'key' => '_thumbnail_id'
+            ) 
+        )
     ));
     ?>
 

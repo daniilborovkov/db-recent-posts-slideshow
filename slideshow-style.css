@@ -14,13 +14,14 @@
   border-bottom-color: rgba(255,255,255,0.5);
   border-width:0.5px;*/
   position: relative;
-  margin-bottom: px;
+  /*margin-bottom: px;*/
+  border-bottom: 1px solid white;
 }
-.slide-container:before, .slide-container:after {
+/*.slide-container:before, .slide-container:after {
   content: '';
   background: rgba(255, 255, 255, 1);
   position: absolute;
-}
+}*/
 .slide-container:after {
   bottom: -25px;
   left: 20px;

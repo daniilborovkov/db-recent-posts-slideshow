@@ -12,8 +12,10 @@ function showSlides(n) {
   for (var i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  slides[n].style.display = "flex";
-  currentSlide = n;
+  if (slides.length > 0) {
+    slides[n].style.display = "flex";
+    currentSlide = n;
+  }
 }
 
 function clickRight() {
