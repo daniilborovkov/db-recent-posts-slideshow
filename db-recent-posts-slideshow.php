@@ -27,32 +27,38 @@ function db_recent_posts_slideshow($atts)
             ) 
         )
     ));
-    ?>
 
-  <section id="slid__section" class="def">
+    $txt = '';
+    
+
+  $txt .= '<section id="slid__section" class="def">
     <section class="slide-container">
 
-        <div class="arrow" id="ar1" onclick="clickLeft()">❮</div>
+        <div class="arrow" id="ar1" onclick="clickLeft()">❮</div>';
 
-        <?php foreach ($query->posts as $key => $post): ?>
+        foreach ($query->posts as $key => $post):
 
-          <div class="slide" style="display: <?php $key === 0 ? 'flex' : 'none'; ?>;">
-            <div class="img_div">
-              <?php echo get_the_post_thumbnail( $post->ID, array('390', '250') ); ?>
-            </div>
-            <div class="slide-text" style="padding-top: 3%; font-size: 14px;">
-              <?php echo $post->post_title; ?>
+          $txt .= '<div class="slide" style="display: ' . $key === 0 ? 'flex' : 'none' .';">
+            <div class="img_div">';
+
+          $txt .=  get_the_post_thumbnail( $post->ID, array('390', '250') );
+
+          $txt .= '</div>
+            <div class="slide-text" style="padding-top: 3%; font-size: 14px;">';
+
+          $txt .= $post->post_title;
+
+          $txt .= '
               <br>
-              <br>
-              <a href="<?php echo get_permalink( $post->ID ); ?>" class="sl_btn" s=""><?php echo __('Подробнее') ?></a></div>
-          </div>
-        <?php endforeach; ?>
+              <br>';
 
-        <div class="arrow" id="ar2" onclick="clickRight()">❯</div>
+          $txt .= '<a href="' . get_permalink( $post->ID ) .'" class="sl_btn" s="">' . __('Подробнее') . '</a></div>
+          </div>';
+        endforeach;
 
-  </section>
+        $txt .= '<div class="arrow" id="ar2" onclick="clickRight()">❯</div>
 
-  <?php
+  </section>';
 }
 
 add_action('wp_enqueue_scripts', function () {
