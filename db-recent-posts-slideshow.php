@@ -21,44 +21,46 @@ function db_recent_posts_slideshow($atts)
         'post_type'      => 'post',
         'posts_per_page' => 5,
         'order'          => 'DESC',
-        'meta_query' => array( 
+        'meta_query'     => array(
             array(
-                'key' => '_thumbnail_id'
-            ) 
-        )
+                'key' => '_thumbnail_id',
+            ),
+        ),
     ));
 
     $txt = '';
-    
 
-  $txt .= '<section id="slid__section" class="def">
+    $txt .= '<section id="slid__section" class="def">
     <section class="slide-container">
 
         <div class="arrow" id="ar1" onclick="clickLeft()">❮</div>';
 
-        foreach ($query->posts as $key => $post):
+    foreach ($query->posts as $key => $post):
+        $display = $key === 0 ? 'flex' : 'none';
 
-          $txt .= '<div class="slide" style="display: ' . $key === 0 ? 'flex' : 'none' .';">
-            <div class="img_div">';
+        $txt .= '<div class="slide" style="display: ' . $display . ';">
+              <div class="img_div">';
 
-          $txt .=  get_the_post_thumbnail( $post->ID, array('390', '250') );
+        $txt .= get_the_post_thumbnail($post->ID, array('390', '250'));
 
-          $txt .= '</div>
-            <div class="slide-text" style="padding-top: 3%; font-size: 14px;">';
+        $txt .= '</div>
+              <div class="slide-text" style="padding-top: 3%; font-size: 14px;">';
 
-          $txt .= $post->post_title;
+        $txt .= $post->post_title;
 
-          $txt .= '
-              <br>
-              <br>';
+        $txt .= '
+                <br>
+                <br>';
 
-          $txt .= '<a href="' . get_permalink( $post->ID ) .'" class="sl_btn" s="">' . __('Подробнее') . '</a></div>
-          </div>';
-        endforeach;
+        $txt .= '<a href="' . get_permalink($post->ID) . '" class="sl_btn" s="">' . __('Подробнее') . '</a></div>
+            </div>';
+    endforeach;
 
-        $txt .= '<div class="arrow" id="ar2" onclick="clickRight()">❯</div>
+    $txt .= '<div class="arrow" id="ar2" onclick="clickRight()">❯</div>';
 
-  </section>';
+    $txt .= '</section></section>';
+
+    return $txt;
 }
 
 add_action('wp_enqueue_scripts', function () {
