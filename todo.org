@@ -1,0 +1,2 @@
+[ ] Editions
+  [ ] add adaptive
