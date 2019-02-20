@@ -1,5 +1,6 @@
 #slid__section.def {
   margin-left: 0px;
+  overflow: hidden;
 }
 #slid__section {
   height: 300px;
@@ -10,18 +11,10 @@
   display: flex;
   align-items: center;
   padding-bottom: 10px;
-  /*  border-bottom: solid;
-  border-bottom-color: rgba(255,255,255,0.5);
-  border-width:0.5px;*/
   position: relative;
-  /*margin-bottom: px;*/
   border-bottom: 1px solid white;
+  position: relative;
 }
-/*.slide-container:before, .slide-container:after {
-  content: '';
-  background: rgba(255, 255, 255, 1);
-  position: absolute;
-}*/
 .slide-container:after {
   bottom: -25px;
   left: 20px;
@@ -39,7 +32,6 @@
   animation-duration: 2s;
 }
 .slide-img {
-  /*width: 60%;*/
   position: relative;
 }
 .slide-text {
@@ -51,7 +43,6 @@
   text-align: center;
   align-items: center;
   color: #fff;
-  /*font-size: 20px;*/
   height: 250px;
   width: 300px;
 }
@@ -73,11 +64,15 @@
     opacity: 1
   }
 }
-@media only screen and ( min-device-width: 320px) and (max-device-width: 425px) {
+@media only screen and ( min-device-width: 320px) and (max-device-width: 480px) {
+  #slid__section.def {
+    height: auto;
+  }
   .slide-container {
-    top: 20px;
     display: block;
     left: 90px;
+    padding-top: 0px;
+    border-bottom: 0px;
   }
   .arrow {
     position: absolute;
@@ -90,8 +85,8 @@
     align-items: center;
     flex-direction: column;
     width: 190px;
-    height: 400px;
-    min-height: 250px;
+    /*height: 400px;*/
+    min-height: 400px;
     min-width: 300px;
   }
   .slide-img {
@@ -99,17 +94,24 @@
     min-width: 300px;
   }
   .slide-text {
+    height: auto;
     left: -15px;
-    height: 250px;
     width: 300px;
+    padding-bottom: 15px;
+  }
+  br {
+    display: none;
   }
   #ar1 {
     top: 60px;
-    right: 369px;
+    left: -100px;
+    background: rgba(0, 0, 0, 0.5);
   }
   #ar2 {
-    left: 190px;
-    bottom: 290px;
+    left: 145px;
+    /*bottom: 290px;*/
+    top: 60px;
+    background: rgba(0, 0, 0, 0.5);
   }
   .slide-container:before, .slide-container:after {
     content: '';
@@ -136,4 +138,10 @@
   padding-bottom: 1px;
   margin: 10px;
   -webkit-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+}
+
+@media screen and (max-width: 480px) {
+  #slid__section.def {
+    max-height: unset;
+  }
 }
