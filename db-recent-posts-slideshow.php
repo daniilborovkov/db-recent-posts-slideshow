@@ -39,26 +39,28 @@ function db_recent_posts_slideshow($atts)
         $display = $key === 0 ? 'flex' : 'none';
 
         $txt .= '<div class="slide" style="display: ' . $display . ';">
-              <div class="img_div">';
+                  <div class="img_div">';
 
         $txt .= get_the_post_thumbnail($post->ID, array('390', '250'));
 
         $txt .= '</div>
-              <div class="slide-text" style="padding-top: 3%; font-size: 14px;">';
+                  <div class="slide-text" style="padding-top: 3%; font-size: 14px;">';
 
         $txt .= $post->post_title;
 
         $txt .= '
-                <br>
-                <br>';
+                    <br>
+                    <br>';
 
         $txt .= '<a href="' . get_permalink($post->ID) . '" class="sl_btn" s="">' . __('Подробнее') . '</a></div>
-            </div>';
+                </div>';
     endforeach;
 
     $txt .= '<div class="arrow" id="ar2" onclick="clickRight()">❯</div>';
 
     $txt .= '</section></section>';
+
+    $txt .= '<center><a class="sl_btn" href="' . get_permalink(get_option('page_for_posts')) . '"> ' . get_the_title(get_option('page_for_posts')) . '</a></center>';
 
     return $txt;
 }
